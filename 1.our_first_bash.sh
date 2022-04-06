@@ -37,6 +37,9 @@ Part2.Owner permission(read,write,execute => rwx)
 Part3.Group Permission(read,write,execute => rwx)
 Part4.Others permission(read,write,execute => rwx)
 
+Most important part in this section is =>  Adding scripts to my (default machine) PATH
+change the path in .profile file or .bashrc file. After adding path, your every command run from (specific dir) specified path.
+
 
 
 '
