@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+
+# Author : Mynuddin
+# Date Created : 05/04/2022
+# Last Modified : 05/04/2022
+#Creates a backup in /Bash/my_backup_"$(date +%d-%m-%Y_%H-%M-%S)".tar ~/* 2>/dev/null
+#usage : backup_script
+
+tar -cvf ~/bash_course/my_backup_"$(date +%d-%m-%Y_%H-%M-%S)".tar ~/* 2>/dev/null
+
+# backup everything under home directory
+
+exit 0 
