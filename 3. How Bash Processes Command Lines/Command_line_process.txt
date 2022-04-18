@@ -1,0 +1,161 @@
+#!/usr/bin/bash
+
+How bash process the command line
+When Bash receives a command line, it will follow the following
+6-step process to interpret its meaning and execute it.
+
+Step 1:Tokenisation 
+---------------------
+Token , a sequence of caharacter that is considered as a single unit by the shell.
+Bash break the command line by using metacharacters
+
+Space 
+Tab
+New line
+|
+&
+;
+(   
+)
+<
+>
+
+Like human break a sentence by using punctuation
+
+Then, Classify the token either its words or operator
+Word: a token that doesnt contain an unquoted metacharacter
+Operator : a token that contains at least one unquoted metacharacter
+
+Difference : Words never contain unquoted metacharacters.
+             Operators always contain unquoted metacharacters.
+
+
+Step 2 : Command identifications
+-------------------------------------
+Command line :
+    1.Simple command 
+    2.Compound command
+            
+1. Simple commands: are a set of words terminated by a
+control operator(command name, then control operator)
+
+LIST OF CONTROL OPERATORS
+
+Newline 
+|
+||
+& 
+&& 
+; 
+;; 
+;& 
+;;&
+|&
+(
+)
+
+LIST OF REDIRECTION OPERATORS
+
+<
+>
+<<
+>>
+<&
+>&
+>|
+<<-
+< >
+
+Example : 
+echo $name>out
+echo(Space)$name(>)out(Space) -- Identifies unquoted metacharacters
+echo $name > out -- Identifies Words & operators (echo,name,out,>)
+
+EXAMPLES OF SIMPLE COMMANDS:
+
+Example 1:
+echo a b c echo 1 2 3 (only Spaces here)
+Interpreted as "one" simple command, because there are no control operators.
+
+Example 2:
+echo a b c;echo 1 2 3
+This is as "two" interpreted simple commands because there is
+a control operator that ends the first command.
+
+Example 3:
+echo $name > out
+
+echo(Space)$name > out -- Tokenisation
+echo(Space)$name (>) out -- Found a redirection operator but no
+control operators
+echo $name > out -- All interpreted as one simple
+command, including redirection operator
+
+2. Compound commands: These are bash’s programming constructs. They start with
+a reserved word and are terminated by the corresponding
+reserved words such as if statement,for loops,while loops etc.
+
+Example : 
+
+if [[ 2 -gt 1 ]]; then
+echo “hello world”
+fi
+
+Step 3: Expansion
+--------------------
+
+Note 1: Earlier stages are given higher precedence than
+later ones.
+
+Note 2: Expansions in the same stage are all given equal
+precedence and are simply processed from left to right.
+
+There are 4 stages to processing Expansion
+Stage 1: Brace expansion 
+Stage 2:
+    Parameter expansion
+    Arithmetic expansion
+    Command substitution
+    Tilde expansion
+
+Stage 3:Word Splitting (Better understanding read cheatsheet)
+Stage 4:Globbing (aka filename expansion)(For better understanding read cheatsheet)
+
+When the shell has done these 5 steps, it will then execute the result
+
+Step 4: Quote Removal
+----------------------
+During quote removal, the shell removes all unquoted
+backslashes, single quote characters , and double quote
+characters that did NOT result from a shell expansion.
+
+echo “hello” => Result echo hello
+echo ‘ “hello” ’=> Result echo “hello”
+echo \”hello\” => Result echo "hello"
+
+path=”C:\Users\Karen\Documents”
+echo $path
+Result path=C:\Users\Karen\Documents
+
+Step 5: Redirection
+--------------------
+The shell then processes any redirection operators to determine
+where the standard input, standard output and standard error
+data streams for the command should connect to.
+
+Note 1: Not all commands use every data stream. The best way
+to find out what streams a command uses is to try it out, or to
+read its manual page
+Note 2: A data stream can only connect to one location at a
+time
+Note 3: Redirections are processed from left to right
+
+Example Redirection Operators
+
+command < file => Redirects the contents of file to the standard input of command.
+command > file => Truncates file and then redirects standard output of command to it
+command >> file => Appends standard output of command to file.
+command 2> file => Truncates file and then redirects standard error of command to it
+command 2>> file => Appends standard error of command to file
+command &> file => Truncates file, and then redirects both standard output and standard error of command to it.
+command &>> file => Appends both standard output and standard error of command
