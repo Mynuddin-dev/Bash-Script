@@ -1,0 +1,74 @@
+
+: '
+Tokenisation 
+---------------------
+Token , a sequence of caharacter that is considered as a single unit by the shell.
+Bash break the command line by using metacharacters
+
+Space 
+Tab
+New line
+|
+&
+;
+(   
+)
+<
+>
+
+Like human break a sentence by using punctuation
+
+Then, Classify the token either its words or operator
+Word: a token that doesnt contain an unquoted metacharacter
+Operator : a token that contains at least one unquoted metacharacter
+
+Difference : Words never contain unquoted metacharacters.
+             Operators always contain unquoted metacharacters.
+
+Two types of operator
+--------------------------
+LIST OF CONTROL OPERATORS
+
+Newline 
+|
+||
+& 
+&& 
+; 
+;; 
+;& 
+;;&
+|&
+(
+)
+
+LIST OF REDIRECTION OPERATORS
+
+<
+>
+<<
+>>
+<&
+>&
+>|
+<<-
+< >
+
+control operator + Redirection operators only matter if
+they are unquoted
+
+1.Uquoted metachracters ditinguish tokens
+2.Decide if token is a word or operator
+3.Classify operators as control or redirection operators
+
+
+Example
+echo $name > out
+
+echo(Space)$name > out -- Tokenisation
+echo(Space)$name(Space)(>)(Space)out -- Found a redirection operator but no
+control operators.
+
+3 words echo,name,out and 1 redirection operator
+
+'

@@ -1,0 +1,77 @@
+
+Step 2 : Command identifications
+-------------------------------------
+Command line :
+    1.Simple command 
+    2.Compound command
+            
+1. Simple commands: are a set of words separated by sapces and terminated by either a new line or one of other
+control Operators available in bash(command name, then control operator)
+
+LIST OF CONTROL OPERATORS
+
+Newline 
+|
+||
+& 
+&& 
+; 
+;; 
+;& 
+;;&
+|&
+(
+)
+
+LIST OF REDIRECTION OPERATORS
+
+<
+>
+<<
+>>
+<&
+>&
+>|
+<<-
+< >
+
+
+EXAMPLES OF SIMPLE COMMANDS:
+Initial command
+
+Example 0:
+echo 1 2 3
+echo(Command name)
+1 2 3(Individual arguments)
+Its a simple command 
+
+Example 1:
+echo a b c echo 1 2 3 (only Spaces here)
+Interpreted as "one" simple command, because there are no control operators.
+
+Example 2:
+echo a b c;echo 1 2 3
+This is as "two" interpreted simple commands because there is
+a control operator that ends the first command.
+
+Example 3:
+echo $name > out
+
+echo(Space)$name > out -- Tokenisation
+echo(Space)$name(Space)(>)(Space)out -- Found a redirection operator but no
+control operators.
+
+3 words echo,name,out.txt
+
+echo $name > out -- All interpreted as one simple
+command, including redirection operator
+
+2. Compound commands: These are bash’s programming constructs. They start with
+a reserved word and are terminated by the corresponding
+reserved words such as if statement,for loops,while loops etc.
+
+Example : 
+
+if [[ 2 -gt 1 ]]; then
+echo “hello world”
+fi
