@@ -36,8 +36,9 @@ Command line :
     1.Simple command 
     2.Compound command
             
-1. Simple commands: are a set of words terminated by a
-control operator(command name, then control operator)
+1. Simple commands: are a set of words separated by sapces and terminated by either a new line or one of other
+control Operators available in bash(command name, then control operator)
+
 
 LIST OF CONTROL OPERATORS
 
@@ -90,6 +91,7 @@ echo(Space)$name (>) out -- Found a redirection operator but no
 control operators
 echo $name > out -- All interpreted as one simple
 command, including redirection operator
+3 words(echo,name,our) and 1 redirection operator(>)
 
 2. Compound commands: These are bash’s programming constructs. They start with
 a reserved word and are terminated by the corresponding
