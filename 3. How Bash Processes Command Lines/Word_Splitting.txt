@@ -1,0 +1,58 @@
+Word Splitting : A process the shell performs to split the result of some unquoted expansiom into separate words.
+Word splitting can have some very significant effects on how your command lines are interpreted.
+Word splitting is only performed on the result of unquoted:
+    1.Parameter expansion
+    2.Command substitution
+    3.Arithmetic expansions
+
+The characters used to split words are governed by the IFS(Internal Field Separator) variable
+IFS just a variable but it contains => Space , tab and new line be default which are all invisiable 
+characters, which means we cant just print out the variable to take a look look it using normal parameter.
+
+echo "${IFS}" IFS variable print out nothing
+echo "${IFS@Q}" IFS variable print out
+
+Note 1: Word splitting is a very important step, because each
+word provided to a command is considered as an individual
+argument to the command (see the “Command
+Identification” step above).
+
+Note 2: Word splitting doesn’t occur on the results of
+expansions that occurred inside double quotes.
+
+word Splitting
+numbers=”1 2 3 4 5” # invisiable characters spaces 
+touch $numbers
+Result: 5 files created
+
+Mo word Splitting
+numbers=”1 2 3 4 5”
+touch “$numbers”
+touch “1 2 3 4 5”
+Result: 1 file created called “1 2 3 4 5”
+
+rm ${1..5}
+
+Note 3: Bash will split a word using the characters stored
+in the IFS variable, which by default contains space, tab,
+and newline.
+
+Note 4: You can modify the IFS variable just like any other
+variable.
+
+like IFS=","
+numbers=1,2,3,4,5 
+touch $numbers
+Result: 1 file created
+
+
+Note 5: Use echo "${IFS@Q}" to view what characters
+the IFS variable currently contains
+
+Simple rule :
+If you want the output of a : 
+    1.Parameter expansion
+    2.Command substitution
+    3.Arithmetic expansions
+to be considered as a single word 
+"Wrap the expansion in double quotes"
