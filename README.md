@@ -32,4 +32,21 @@ Udemy Course : [Bash Mastery: The Complete Guide to Bash Shell Scripting](https:
 - Tilde : Use tilde expansion and brace expansion to make the work on the command line more convenient.
 - Brace expansion : A way of automatically generating text according to a certain pattern.
 
+**Section 3: How Bash Processes Command Lines**
+- Step 1: Tokenization
+- Step 2: Command Identification
+	- Simple command
+	- Compound command
+- Step 3: Expansion
+	- Stage 01: Brace Expansion
+	- Stage 02:
+		 - Parameter expansion
+		 - Arithmetic expansion
+		 - Command substitution
+		 - Tilde expansion
+	- Stage 03: Word Splitting
+	- Stage 04: Globbing
+- Step 4:Quote Removal
+- Step 5:Redirection
+- Step 6:Execute
 
