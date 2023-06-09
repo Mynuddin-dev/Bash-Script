@@ -3,7 +3,9 @@
   
 </p>
 
-Udemy Course : [Bash Mastery: The Complete Guide to Bash Shell Scripting](https://www.udemy.com/course/bash-mastery/?src=sac&kw=Master+bash)
+Udemy Course : [Bash Mastery: The Complete Guide to Bash Shell Scripting](https://www.udemy.com/course/bash-mastery/?src=sac&kw=Master+bash)\
+Best For Beginners : [Linux Journey](https://linuxjourney.com/)
+
 
 **Section 1 : How to Build a Bash Script**
 ---
